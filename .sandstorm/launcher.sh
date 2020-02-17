@@ -35,5 +35,5 @@ set -euo pipefail
 
 export HOME=/var/home
 mkdir -p $HOME
-jupyter lab --port=8888 --notebook-dir=$HOME
+jupyter lab --port=8000 --notebook-dir=$HOME
 exit 0
