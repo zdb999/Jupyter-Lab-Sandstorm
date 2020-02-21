@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+# CAUTION: DO NOT MAKE CHANGES TO THIS FILE. The vagrant-spk upgradevm process will overwrite it.
+# App-specific setup should be done in the setup.sh file.
+
 # Set options for curl. Since we only want to show errors from these curl commands, we also use
 # 'cat' to buffer the output; for more information:
 # https://github.com/sandstorm-io/vagrant-spk/issues/158
@@ -27,7 +30,7 @@ if [[ ! -f /host-dot-sandstorm/caches/$SANDSTORM_PACKAGE ]] ; then
 fi
 if [ ! -e /opt/sandstorm/latest/sandstorm ] ; then
     echo -n "Installing Sandstorm version ${SANDSTORM_CURRENT_VERSION}..."
-    bash /host-dot-sandstorm/caches/install.sh -d -e "/host-dot-sandstorm/caches/$SANDSTORM_PACKAGE" >/dev/null
+    bash /host-dot-sandstorm/caches/install.sh -d -e -p 6090 "/host-dot-sandstorm/caches/$SANDSTORM_PACKAGE" >/dev/null
     echo "...done."
 fi
 modprobe ip_tables

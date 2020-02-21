@@ -19,7 +19,7 @@ set -euo pipefail
 
 # By default, this script does nothing.  You'll have to modify it as
 # appropriate for your application.
-# cd /opt/app
-pip3 install jupyterlab
+cd /opt/app
+# PATH=/opt/app/anaconda3/bin/:$(echo $PATH)
+# conda update --all
 exit 0
-

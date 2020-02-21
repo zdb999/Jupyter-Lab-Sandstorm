@@ -28,11 +28,8 @@ set -euo pipefail
 
 # By default, this script does nothing.  You'll have to modify it as
 # appropriate for your application.
-# cd /opt/app
-# cd /var
-# jupyter lab --port 8000
-# exit 0
 
+PATH=/opt/app/anaconda3/bin/:$(echo $PATH)
 export HOME=/var/home
 mkdir -p $HOME
 jupyter lab --port=8000 --notebook-dir=$HOME

@@ -22,7 +22,16 @@ set -euo pipefail
 
 # By default, this script does nothing.  You'll have to modify it as
 # appropriate for your application.
-sudo apt-get update
-apt-get install -y python3 python3-dev python3-pip
-apt-get install -y python3-numpy python3-scipy python3-matplotlib
+
+cd /opt/app
+if [ ! -d "anaconda3" ]; then
+    apt-get update
+    apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+    apt-get autoremove
+    bash Miniconda3-latest-Linux-x86_64.sh -b -p $(pwd)/anaconda3
+    PATH=/opt/app/anaconda3/bin/:$(echo $PATH)
+    conda install python -y
+    conda install jupyter -y
+    conda install -y -c conda-forge jupyterlab
+fi
 exit 0
